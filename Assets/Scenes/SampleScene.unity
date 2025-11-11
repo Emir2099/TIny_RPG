@@ -7637,8 +7637,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d3fe1cb1bc7c2144bbd166402a69de51, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
-  player: {fileID: 208335369}
+  speed: 3
 --- !u!95 &816991543
 Animator:
   serializedVersion: 7
@@ -7695,8 +7694,8 @@ CircleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 3.2020097, y: 0}
-  m_Radius: 2.9125504
+  m_Offset: {x: 2.3001513, y: 0}
+  m_Radius: 3.8144088
 --- !u!1 &1073960634
 GameObject:
   m_ObjectHideFlags: 0
