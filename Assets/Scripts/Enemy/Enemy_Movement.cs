@@ -9,6 +9,7 @@ public class Enemy_Movement : MonoBehaviour
 
     // private bool isChasing;
 
+    public float attackRange = 1.2f;
     private EnemyState enemyState;
 
     private Transform player;
@@ -25,8 +26,26 @@ public class Enemy_Movement : MonoBehaviour
             return;
         }
 
+        else if (enemyState == EnemyState.Chasing)
+        {
+            Chaise();
+        }
+
+        else if (enemyState == EnemyState.Attacking)
+        {
+            rb.velocity = Vector2.zero;
+        }
+    }
+    
+    void Chaise()
+    {
+        if(Vector2.Distance(transform.position, player.transform.position) <= attackRange)
+        {
+            ChangeState(EnemyState.Attacking);
+        }
+
         // Flip if player is on the opposite side
-        if ((player.position.x > transform.position.x && facingDirection == -1) ||
+        else if ((player.position.x > transform.position.x && facingDirection == -1) ||
             (player.position.x < transform.position.x && facingDirection == 1))
         {
             Flip();
@@ -49,7 +68,7 @@ public class Enemy_Movement : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerStay2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
         {
@@ -94,6 +113,8 @@ public class Enemy_Movement : MonoBehaviour
             anim.SetBool("isIdle", false);
         else if (enemyState == EnemyState.Chasing)
             anim.SetBool("isChasing", false);
+        else if (enemyState == EnemyState.Attacking)
+            anim.SetBool("isAttacking", false);
 
         // Update our current state
         enemyState = newState;
@@ -103,6 +124,8 @@ public class Enemy_Movement : MonoBehaviour
             anim.SetBool("isIdle", true);
         else if (enemyState == EnemyState.Chasing)
             anim.SetBool("isChasing", true);
+        else if (enemyState == EnemyState.Attacking)
+            anim.SetBool("isAttacking", true);
     }
 }
 
@@ -110,4 +133,5 @@ public enum EnemyState
 {
     Idle,
     Chasing,
+    Attacking,
 }
