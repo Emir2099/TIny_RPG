@@ -6518,6 +6518,7 @@ GameObject:
   - component: {fileID: 208335365}
   - component: {fileID: 208335370}
   - component: {fileID: 208335371}
+  - component: {fileID: 208335372}
   m_Layer: 3
   m_Name: Player
   m_TagString: Player
@@ -6709,10 +6710,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9810ddfe832c1ef4893a0eb7f2a44ecf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentHealth: 3
-  maxHealth: 3
+  currentHealth: 20
+  maxHealth: 20
   healthText: {fileID: 208221126}
   healthTextAnim: {fileID: 208221128}
+--- !u!114 &208335372
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 208335364}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61fdcf0bba350c3408383e3439429350, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  anim: {fileID: 208335370}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -7492,7 +7506,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 1
   attackPoint: {fileID: 1681897279}
-  weaponRange: 1
+  weaponRange: 0.8
+  knockbackForce: 20
+  stunTime: 0.2
   playerLayer:
     serializedVersion: 2
     m_Bits: 8
@@ -7645,7 +7661,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 3
-  attackCooldown: 2
+  attackCooldown: 1
   playerDetectionRange: 5
   detectionPoint: {fileID: 1775196639}
   playerLayer:
